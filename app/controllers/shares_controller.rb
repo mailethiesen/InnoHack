@@ -57,6 +57,12 @@ class SharesController < ApplicationController
    redirect_to shares_path
   end
 
+  def get_user_ip_address
+    @share = Share.find(params[:id])
+    user_ip = request.remote_ip
+    puts user_ip
+  end
+
   private
 
   def share_params

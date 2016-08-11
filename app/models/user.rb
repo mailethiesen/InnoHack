@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   gravtastic
 
   has_many :shares
+
+  geocoded_by :address, :latitude  => :lat, :longitude => :lon
+
 end
