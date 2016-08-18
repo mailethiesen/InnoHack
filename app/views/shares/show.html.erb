@@ -1,8 +1,9 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1><%= @share.title %></h1><br />
   <i><%= current_user.name %></i><br /><br />
+  <h2><=% @user.user_location %></h2>
 
-  <p><%= linkify_hashtags(markdwon(@share.body)) %></p><br />
+  <p><%= linkify_hashtags(markdown(@share.body)) %></p><br />
   <%= pluralize(@share.votes.count, "votes") %>
   <%= button_to '+1', upvote_share_path(@share), method: :post %><br />
   <div class="btn btn-warning pull-right"><%= link_to 'Edit', edit_share_path(@share) %></div>

@@ -3,6 +3,7 @@ class SharesController < ApplicationController
 	
   def new
     @share = Share.new
+
   end
 
   def index
@@ -12,21 +13,22 @@ class SharesController < ApplicationController
 
   end
 
-
-
   def create
    @share = current_user.shares.create(share_params)
+   @lat_lon = [params[:lat_lon]]
    if @share.valid?
     redirect_to shares_path
    else
     render :new, status: :unprocessable_entity
    end
+
   end
 
   def show
    @share = Share.find_by_id(params[:id])
    return render_not_found if @share.blank?
    @comment = Comment.new
+
 
   end
 
@@ -66,7 +68,7 @@ class SharesController < ApplicationController
   private
 
   def share_params
-   params.require(:share).permit(:body, :title)
+   params.require(:share).permit(:body, :title, :lat_lon)
   end
 
 

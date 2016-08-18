@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
 
+  get '/user_location', to: "users#user_location"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
